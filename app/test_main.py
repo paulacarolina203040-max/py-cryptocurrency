@@ -22,3 +22,17 @@ def test_do_nothing(mock_prediction: object) -> None:
     mock_prediction.return_value = 102.0
     result = cryptocurrency_action(100.0)
     assert result == "Do nothing"
+
+
+@patch("app.main.get_exchange_rate_prediction")
+def test_rate_105_percent_do_nothing(mock_prediction: object) -> None:
+    mock_prediction.return_value = 105.0
+    result = cryptocurrency_action(100.0)
+    assert result == "Do nothing"
+
+
+@patch("app.main.get_exchange_rate_prediction")
+def test_rate_95_percent_do_nothing(mock_prediction: object) -> None:
+    mock_prediction.return_value = 95.0
+    result = cryptocurrency_action(100.0)
+    assert result == "Do nothing"
